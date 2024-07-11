@@ -9,3 +9,7 @@ Authorization: U2FsdGVkX1+3
 ### DEPLOY TOKEN CONTRACT
 GET http://localhost:5000/web3/deploy/token
 Authorization: U2FsdGVkX1+3
+
+### DEPLOY TOKEN CAMPAIGN
+GET http://localhost:5000/web3/deploy/campaign
+Authorization: U2FsdGVkX1+3

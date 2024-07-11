@@ -58,3 +58,18 @@ export const deployTokenContract = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const deployCampaignContract = async (req, res) => {
+  const contractName = "TokenContract";
+  try {
+    const result = await deploySmartContract(contractName);
+    // return res.status(200).json({
+    //   message: `${contractName} deployed successfully`,
+    //   data: result,
+    // });
+    return result;
+  } catch (error) {
+    console.error(`Error deploying ${contractName}:`, error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

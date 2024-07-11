@@ -8,6 +8,7 @@ import {
   CONTRACT_ADDRESS_TRANSACTION,
   CONTRACT_ADDRESS_TRANSACTION_DETAIL,
   CONTRACT_ADDRESS_TOKEN,
+  CONTRACT_ADDRESS_CAMPAIGN,
   PRIVATE_KEY,
   API_URL,
   WALLET_ADDRESS,
@@ -16,6 +17,7 @@ import {
   deployTransactionContract,
   deployTransactionDetailContract,
   deployTokenContract,
+  deployCampaignContract,
 } from "../controllers/web3Controller.js";
 import { consoleForDevelop } from "../config/app.js";
 
@@ -58,7 +60,13 @@ export const compileContracts = async () => {
         bytecodeFileName: "TokenContractBytecode.txt",
         deployFunction: deployTokenContract,
       },
-      // Add more contracts as needed
+      {
+        name: "CampaignContract",
+        filename: "CampaignContract.sol",
+        abiFileName: "CampaignContractABI.json",
+        bytecodeFileName: "CampaignContractBytecode.txt",
+        deployFunction: deployCampaignContract,
+      },
     ];
 
     // Compile each contract
@@ -196,6 +204,10 @@ const validateUseFor = (useFor) => {
   if (useFor === "token") {
     abiPath = path.resolve(buildPath, "TokenContractABI.json");
     return [JSON.parse(fs.readFileSync(abiPath)), CONTRACT_ADDRESS_TOKEN];
+  }
+  if (useFor === "campaign") {
+    abiPath = path.resolve(buildPath, "CampaignContractABI.json");
+    return [JSON.parse(fs.readFileSync(abiPath)), CONTRACT_ADDRESS_CAMPAIGN];
   }
   throw new Error("Invalid useFor value");
 };

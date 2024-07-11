@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import TransactionRoute from "./routes/transactionRoute.js";
 import TransactionDetailRoute from "./routes/transactionDetailRoute.js";
 import TokenRoute from "./routes/tokenRoute.js";
+import CampaignRoute from "./routes/campaignRoute.js";
 import Web3Route from "./routes/web3Route.js";
 import { compileContracts } from "./services/web3Service.js";
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/transactions", TransactionRoute);
 app.use("/api/transaction-details", TransactionDetailRoute);
 app.use("/api/tokens", TokenRoute);
+app.use("/api/campaign", CampaignRoute);
 // app.use("/web3", Web3Route);
 
 // route for testing
