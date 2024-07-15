@@ -60,7 +60,7 @@ export const deployTokenContract = async (req, res) => {
 };
 
 export const deployCampaignContract = async (req, res) => {
-  const contractName = "TokenContract";
+  const contractName = "CampaignContract";
   try {
     const result = await deploySmartContract(contractName);
     // return res.status(200).json({

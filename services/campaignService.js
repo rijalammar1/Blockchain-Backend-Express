@@ -24,7 +24,7 @@ const mapCampaign = (campaign) => {
 // GET 
 export const getCampaigns = async () => {
   consoleForDevelop("Get Campaign Process [Transaction Service]");
-  const contract = await createContractInstance("transaction");
+  const contract = await createContractInstance("campaign");
   const campaigns = await contract.methods.getCampaigns().call();
   const mappedCampaigns = campaigns.map(mapCampaign); // Gunakan .map(mapCampaign) untuk memetakan setiap elemen
   console.log(mappedCampaigns);
@@ -34,7 +34,7 @@ export const getCampaigns = async () => {
 
 export const getCampaignDetails = async (id) => {
   consoleForDevelop("Get Campaign by Id Process [Service]");
-  const contract = await createContractInstance("transaction");
+  const contract = await createContractInstance("campaign");
   // console.log("id", id);
   const campaign = await contract.methods.getCampaignDetails(id).call();
   // console.log(campaign);
@@ -75,7 +75,7 @@ export const addCampaign = async (req) => {
     fundraisingPeriodStart,
     fundraisingPeriodEnd,
   ];
-  var response = await sendRawTx(arrayParams, "addCampaign", "transaction");
+  var response = await sendRawTx(arrayParams, "addCampaign", "campaign");
   if (response.transactionHash) {
     consoleForDevelop(
       [
